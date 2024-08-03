@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_api_key',
+    'accounts',
     'api',
     'kpi',
 ]
@@ -134,3 +135,8 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
+LOGIN_REDIRECT_URL = 'knowledge:maintenance_list'
+# LOGOUT_REDIRECT_URL = 'accounts:logout'
+LOGIN_URL = 'accounts:login'

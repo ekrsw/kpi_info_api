@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block content %}
+<h1>オペレーターリスト</h1>
+<ul>
+    {% for operator in operators %}
+    <li>{{ operator.name }} | {{ operator.reporter_name }} | {{ operator.sweet_name }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

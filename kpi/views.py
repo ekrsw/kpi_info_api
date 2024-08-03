@@ -1,8 +1,20 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView, DetailView
 
-class DashboardView(TemplateView):
+from .models import KPIModel, Operator
+
+class LatestDashboardView(TemplateView):
     template_name = 'kpi/dashboard.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['latest_kpi'] = KPIModel.objects.latest('created_at')
+        return context
 
-class DetailView(TemplateView):
-    template_name = 'kpi/detail.html'
+class OperatorsListView(ListView):
+    model = Operator
+    template_name = 'kpi/operator/operators_list.html'
+    context_object_name = 'operators'
+
+class OperatorDetailView(DetailView):
+    model = Operator
+    template_name = 'kpi/operator/operator_detail.html'

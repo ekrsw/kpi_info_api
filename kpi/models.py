@@ -45,3 +45,34 @@ class KPIModel(models.Model):
     
     def __str__(self):
         return f'Created at {timezone.localtime(self.created_at).strftime('%Y/%m/%d %H:%M:%S')}'
+
+
+class Operator(models.Model):
+    name = models.CharField(max_length=100, verbose_name='オペレーター名')
+    reporter_name = models.CharField(max_length=100, verbose_name='CTStage名', null=True, blank=True)
+    sweet_name = models.CharField(max_length=100, verbose_name='Sweet名', null=True, blank=True)
+    is_supervisor = models.BooleanField(verbose_name='スーパーバイザーかどうか', default=False)
+    is_active = models.BooleanField(verbose_name='アクティブかどうか', default=True)
+    csc_group = models.ForeignKey('CSCGroup', on_delete=models.CASCADE, verbose_name='CSCグループ', null=True, blank=True)
+    created_at = models.DateTimeField(default=timezone.now, editable=False)
+    updated_at = models.DateTimeField(default=timezone.now)
+
+    def save(self, *args, **kwargs):
+        self.updated_at = timezone.now()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+
+class CSCGroup(models.Model):
+    name = models.CharField(max_length=100, verbose_name='CSCグループ名')
+    created_at = models.DateTimeField(default=timezone.now, editable=False)
+    updated_at = models.DateTimeField(default=timezone.now)
+
+    def save(self, *args, **kwargs):
+        self.updated_at = timezone.now()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name

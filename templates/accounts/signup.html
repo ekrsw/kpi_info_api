@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="form-login w-100 m-auto p-5">
+    <div class="row justify-content-center">
+        <h2>Sign up</h2>
+        <form class="text-center" style="width: 250px;" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label><br>
+                {{ field }}
+                {% if field.errors %}
+                <p style="color:red">{{ field.errors }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <button class="btn btn-secondary w-100 py-2 mt-4" type="submit">登録</button><br>
+        </form>
+        <a class="text-center" href="{% url 'accounts:login' %}">ログイン画面</a>
+    </div>
+</main>
+{% endblock %}
