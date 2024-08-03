@@ -1,14 +1,119 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>KPI速報 -TVS-</h1>
-    <p>総着信数: {{ latest_kpi.total_calls}}</p>
+{% extends "base.html" %}
 
-    
-</body>
-</html>
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'kpi/css/dashboard.css' %}">
+{% endblock %}
+
+{% block title %}KPI速報{% endblock %}
+
+{% block content %}
+<div class="page">
+    <div class="sidebar">
+        <div class="sidebarContainer">
+            <h5>test</h5>
+            <h5>test</h5>
+            <h5>test</h5>
+        </div>
+    </div>
+    <div class="contents">
+        <div class="titleContainer">
+            <h1>KPI速報</h1>
+            <div class="timeContainer">
+                <div class="timeBox">
+                    <h5>現在の時刻</h5>
+                    <div class="timeContent">00:00:00</div>
+                </div>
+                <div class="timeBox">
+                    <h5>20分前の時刻</h5>
+                    <div class="timeContent">00:00:00</div>
+                </div>
+                <div class="timeBox">
+                    <h5>40分前の時刻</h5>
+                    <div class="timeContent">00:00:00</div>
+                </div>
+            </div>
+        </div>
+        <div class="itemContainer">
+            <div class="containerRow">
+                <div class="box">
+                    <h5>ACW</h5>
+                    <div class="contentField">
+                        <div class="content">
+                            <p class="mainContent">00:00:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h5>ACW</h5>
+                    <div class="contentField">
+                        <div class="content">
+                            <p class="mainContent">00:00:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h5>電話問い合わせ件数</h5>
+                    <div class="contentField">
+                        <div class="content">
+                            <p class="mainContent">0 件</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h5>応答率</h5>
+                    <div class="contentField">
+                        <div class="content">
+                            <p class="mainContent">0.0 %</p>
+                            <p class="subContent">0 / 0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="containerRow">
+                <div class="box">
+                    <h5>直受け率</h5>
+                    <div class="contentField">
+                        <div class="content">
+                            <p class="mainContent">0.0 %</p>
+                            <p class="subContent">0 / 0</p>
+                            <p class="subContent">Buffer: 0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h5>20分以内折返し率</h5>
+                    <div class="contentField">
+                        <div class="content">
+                            <p class="mainContent">0.0 %</p>
+                            <p class="subContent">0 / 0</p>
+                            <p class="subContent">Buffer: 0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h5>30分以内折返し率</h5>
+                    <div class="contentField">
+                        <div class="content">
+                            <p class="mainContent">0.0 %</p>
+                        </div>
+                        <div class="content">
+                            <p class="subContent">0 / 0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h5>40分以内折返し率</h5>
+                    <div class="contentField">
+                        <div class="content">
+                            <p class="mainContent">0.0 %</p>
+                            <p class="subContent">0 / 0</p>
+                            <p class="subContent">Buffer: 0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,91 @@
+.page {
+    display: flex;
+}
+
+.sidebar {
+    width: 150px;
+    background-color: #f0f0f0;
+    border: solid 1px #dfdfdf; 
+    margin: 5px;
+}
+.itemContainer, .titleContainer {
+    width: 100%;
+    align-items: center;
+    background-color: white;
+    max-width: 800px;
+    border-radius: 10px;
+    margin: 5px 0;
+}
+.titleContainer h1 {
+    width: 25%;
+}
+.titleContainer, .timeContainer {
+    display: flex;
+}
+.timeContainer {
+    width: 75%;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+.timeBox{
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    padding: 5px;
+    height: 50px;
+    width: 100px;
+    margin: 8px 3px;
+    border-radius: 5px;
+}
+.timeBox h5 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0;
+}
+.timeBox h5, .titleContainer h1 {
+    color: #193A95;
+}
+.timeContent {
+    text-align: center;
+}
+
+.containerRow {
+    display: flex;
+    justify-content: center;
+}
+.box {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    height: 100px;
+    width: 160px;
+    margin: 8px 8px;
+}
+
+.contentField {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    text-align: center;
+}
+.content {
+    width: 100%;
+}
+
+.mainContent, .subContent {
+    margin: 0 0;
+}
+
+.mainContent {
+    font-size: 25px;
+}
+.subContent {
+    font-size: 15px;
+}
+.box h5 {
+    color: #193A95;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0;
+}
