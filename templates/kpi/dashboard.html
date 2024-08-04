@@ -8,29 +8,23 @@
 {% block title %}KPI速報{% endblock %}
 
 {% block content %}
+{% load custom_filters %}
 <div class="page">
-    <div class="sidebar">
-        <div class="sidebarContainer">
-            <h5>test</h5>
-            <h5>test</h5>
-            <h5>test</h5>
-        </div>
-    </div>
     <div class="contents">
         <div class="titleContainer">
             <h1>KPI速報</h1>
             <div class="timeContainer">
                 <div class="timeBox">
                     <h5>現在の時刻</h5>
-                    <div class="timeContent">00:00:00</div>
+                    <div class="timeContent" id="current-time">00:00:00</div>
                 </div>
                 <div class="timeBox">
                     <h5>20分前の時刻</h5>
-                    <div class="timeContent">00:00:00</div>
+                    <div class="timeContent" id="twenty-minutes-ago">00:00:00</div>
                 </div>
                 <div class="timeBox">
                     <h5>40分前の時刻</h5>
-                    <div class="timeContent">00:00:00</div>
+                    <div class="timeContent" id="forty-minutes-ago">00:00:00</div>
                 </div>
             </div>
         </div>
@@ -56,7 +50,7 @@
                     <h5>電話問い合わせ件数</h5>
                     <div class="contentField">
                         <div class="content">
-                            <p class="mainContent">0 件</p>
+                            <p class="mainContent">{{ kpi_object.phone_inquiries }} 件</p>
                         </div>
                     </div>
                 </div>
@@ -64,8 +58,8 @@
                     <h5>応答率</h5>
                     <div class="contentField">
                         <div class="content">
-                            <p class="mainContent">0.0 %</p>
-                            <p class="subContent">0 / 0</p>
+                            <p class="mainContent">{{ kpi_object.response_rate|percentage }} %</p>
+                            <p class="subContent">{{ kpi_object.responses }} / {{ kpi_object.total_calls }}</p>
                         </div>
                     </div>
                 </div>
@@ -75,8 +69,8 @@
                     <h5>直受け率</h5>
                     <div class="contentField">
                         <div class="content">
-                            <p class="mainContent">0.0 %</p>
-                            <p class="subContent">0 / 0</p>
+                            <p class="mainContent">{{ kpi_object.direct_handling_rate|percentage }} %</p>
+                            <p class="subContent">{{ kpi_object.direct_handling }} / {{ kpi_object.phone_inquiries }}</p>
                             <p class="subContent">Buffer: 0</p>
                         </div>
                     </div>
@@ -85,8 +79,8 @@
                     <h5>20分以内折返し率</h5>
                     <div class="contentField">
                         <div class="content">
-                            <p class="mainContent">0.0 %</p>
-                            <p class="subContent">0 / 0</p>
+                            <p class="mainContent">{{ kpi_object.cumulative_callback_rate_under_20_min|percentage }} %</p>
+                            <p class="subContent">{{ kpi_object.cumulative_callback_under_20_min }} / 0</p>
                             <p class="subContent">Buffer: 0</p>
                         </div>
                     </div>
@@ -95,10 +89,10 @@
                     <h5>30分以内折返し率</h5>
                     <div class="contentField">
                         <div class="content">
-                            <p class="mainContent">0.0 %</p>
+                            <p class="mainContent">{{ kpi_object.cumulative_callback_rate_under_30_min|percentage }} %</p>
                         </div>
                         <div class="content">
-                            <p class="subContent">0 / 0</p>
+                            <p class="subContent">{{ kpi_object.cumulative_callback_under_30_min }} / 0</p>
                         </div>
                     </div>
                 </div>
@@ -106,8 +100,8 @@
                     <h5>40分以内折返し率</h5>
                     <div class="contentField">
                         <div class="content">
-                            <p class="mainContent">0.0 %</p>
-                            <p class="subContent">0 / 0</p>
+                            <p class="mainContent">{{ kpi_object.cumulative_callback_rate_under_40_min|percentage }} %</p>
+                            <p class="subContent">{{ kpi_object.cumulative_callback_under_40_min }} / 0</p>
                             <p class="subContent">Buffer: 0</p>
                         </div>
                     </div>
