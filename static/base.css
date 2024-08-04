@@ -20,7 +20,7 @@ h1 {
     text-align: center;
 }
 
-.formContainer form, .box {
+.formContainer form {
     background-color: white;
     border-radius: 10px;
     border: 1px solid #dfdfdf;
