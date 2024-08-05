@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
-{% block styles %}
-{% load static %}
+{% block head %}
+<meta http-equiv="refresh" content="30">
+{% endblock %}
+
+{% block styles %}{% load static %}
 <link rel="stylesheet" href="{% static 'kpi/css/dashboard.css' %}">
 {% endblock %}
 
@@ -112,4 +115,8 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}{% load static %}
+<script src="{% static 'kpi/js/dashboard.js' %}"></script>
 {% endblock %}
