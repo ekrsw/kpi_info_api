@@ -115,12 +115,66 @@
         </div>
     </div>
 </div>
+
+<div class="page">
     <div class="contents">
+        <div class="titleContainer">
+            <div class="mainContainer">
+
+            </div>
+            <div class="timeContainer">
+
+            </div>
+        </div>
         <div class="itemContainer">
-            
+            <div class="containerRow">
+                <div class="box-large">
+                    <table>
+                        <tr>
+                            <th>総着信数</th>
+                            <td>{{ kpi_object.total_calls }} 件</td>
+                        </tr>
+                        <tr>
+                            <th>放棄呼数</th>
+                            <td>{{ kpi_object.abandoned_calls }} 件</td>
+                        </tr>
+                        <tr>
+                            <th>留守電数</th>
+                            <td>{{ kpi_object.voicemails }} 件</td>
+                        </tr>
+                        <tr>
+                            <th>電話問い合わせ件数</th>
+                            <td>{{ kpi_object.phone_inquiries }} 件</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="box">
+                    <h5>放棄呼数</h5>
+                    <div class="contentField">
+                        <div class="content">
+                            <p class="mainContent">{{ kpi_object.abandoned_calls }} 件</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h5>留守電数</h5>
+                    <div class="contentField">
+                        <div class="content">
+                            <p class="mainContent">{{ kpi_object.voicemails }} 件</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h5>電話問い合わせ件数</h5>
+                    <div class="contentField">
+                        <div class="content">
+                            <p class="mainContent">{{ kpi_object.phone_inquiries }} 件</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-<div class="page">
 </div>
 {% endblock %}
 
