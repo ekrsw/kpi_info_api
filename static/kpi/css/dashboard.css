@@ -2,26 +2,36 @@
     display: flex;
 }
 
+.titleContainer {
+    background-color: green;
+    margin: 5px 5px;
+}
+
 .itemContainer {
     background-color: blue;
     margin: 5px 5px;
 }
-.titleContainer {
-    background-color: green;
+
+.mainContainer {
+    background-color: red;
 }
 
-.itemContainer, .titleContainer {
-    width: 100%;
-    align-items: center;
-
-    max-width: 800px;
-    /*border:solid 1px #dfdfdf;*/
-    /*border-radius: 10px;*/
+.timeContainer {
+    background-color: yellow;
 }
 
 h1 {
     background-color: aquamarine;
 }
+
+.itemContainer, .titleContainer {
+    width: 100%;
+    align-items: center;
+    max-width: 800px;
+    /*border:solid 1px #dfdfdf;*/
+    /*border-radius: 10px;*/
+}
+
 
 .timeStamp {
     color: orange;
@@ -49,9 +59,6 @@ th, td {
     color: white;
 }
 
-.titleContainer .mainContainer {
-    width: 25%;
-}
 .titleContainer, .timeContainer {
     display: flex;
 }
@@ -86,9 +93,17 @@ h1 {
 }
 
 .containerRow {
+    background-color: rgb(190, 153, 99);
     display: flex;
-    justify-content: center;
+    justify-content: left;
 }
+
+.containerMainKPI {
+    background-color: rgb(72, 141, 107);
+    display: flex;
+    justify-content: left;
+}
+
 .box {
     display: flex;
     flex-direction: column;

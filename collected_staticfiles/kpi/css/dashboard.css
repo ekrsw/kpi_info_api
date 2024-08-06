@@ -1,8 +1,40 @@
+.page {
+    display: flex;
+}
+
+.itemContainer {
+    background-color: blue;
+    margin: 5px 5px;
+}
+.titleContainer {
+    background-color: green;
+}
+
+.itemContainer, .titleContainer {
+    width: 100%;
+    align-items: center;
+
+    max-width: 800px;
+    /*border:solid 1px #dfdfdf;*/
+    /*border-radius: 10px;*/
+}
+
+h1 {
+    background-color: aquamarine;
+}
+
+.timeStamp {
+    color: orange;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
 .box-large {
     width: 250px;
     border: solid 1px #f0f0f0;
     border-radius: 10px;
     padding: 10px;
+    margin: 5px 5px;
 }
 table {
     width: 100%;
@@ -11,30 +43,12 @@ th {
     text-align: left;
 }
 td {
-    text-align: center;
+    text-align: right;
 }
 th, td {
     color: white;
 }
 
-
-.page {
-    display: flex;
-}
-
-.itemContainer, .titleContainer {
-    width: 100%;
-    align-items: center;
-    background-color: #373737;
-    max-width: 800px;
-    /*border:solid 1px #dfdfdf;*/
-    /*border-radius: 10px;*/
-    margin: 5px 0;
-}
-.dateContent {
-    color: white;
-    font-size: 15px;
-}
 .titleContainer .mainContainer {
     width: 25%;
 }
