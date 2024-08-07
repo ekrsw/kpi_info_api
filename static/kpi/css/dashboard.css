@@ -5,6 +5,7 @@
 }
 .titleContainer {
     background-color: rgb(83, 235, 182);
+    display: flex;
     height: 75px;
 }
 .mainTitleContainer {
@@ -15,9 +16,10 @@
 }
 .timeContainer {
     background-color: rosybrown;
+    display: flex;
+    justify-content: flex-end;
     height: 100%;
     width: 60%;
-    align-items: right;
 }
 .title {
     color: white;
@@ -26,7 +28,7 @@
     height: 70%;
     width: 100%;
 }
-h1 {
+h1, h5 {
     color: white;
     text-align: left;
     margin: 0px 0px;
@@ -36,4 +38,11 @@ h1 {
     height: 30%;
     width: 100%;
     text-align: left;
+}
+
+.box, .box-large, .timeBox {
+    background-color:rgb(77, 190, 243);
+    opacity: 0.8;
+    border-radius: 5px;
+    border: solid 1px black;
 }

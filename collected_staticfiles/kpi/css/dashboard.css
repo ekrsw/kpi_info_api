@@ -13,6 +13,12 @@
     width: 40%;
     align-items: left;
 }
+.timeContainer {
+    background-color: rosybrown;
+    height: 100%;
+    width: 60%;
+    align-items: right;
+}
 .title {
     color: white;
     text-align: left;
