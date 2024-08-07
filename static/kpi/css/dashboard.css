@@ -26,7 +26,10 @@
 }
 .containerMainKPI, .containerRow {
     display: flex;
+}
+.boxContainer {
     padding: 5px;
+    width: 20%;
 }
 .timeContainer {
     background-color: rosybrown;
@@ -54,14 +57,10 @@ h1, h5 {
     text-align: left;
 }
 
-.box {
-    flex: 1;
-}
-
 .box, .box-large, .timeBox {
     background-color:rgb(77, 190, 243);
     opacity: 0.8;
-    border-radius: 5px;
+    border-radius: 10px;
     border: solid 1px black;
 }
 
@@ -77,6 +76,9 @@ h1, h5 {
     width: 100px;
     padding: 5px;
     margin-left: 5px;
+}
+.box {
+    padding: 5px;
 }
 .timeContent {
     text-align: center;
