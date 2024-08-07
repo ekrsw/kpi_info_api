@@ -1,130 +1,33 @@
-.page {
+.contents {
+    background-color: rgb(83, 164, 235);
     display: flex;
-}
-
-.itemContainer {
-    background-color: blue;
-    margin: 5px 5px;
+    flex-direction: column;
 }
 .titleContainer {
-    background-color: green;
+    background-color: rgb(83, 235, 182);
+    height: 75px;
 }
-
-.itemContainer, .titleContainer {
-    width: 100%;
-    align-items: center;
-
-    max-width: 800px;
-    /*border:solid 1px #dfdfdf;*/
-    /*border-radius: 10px;*/
-}
-
-h1 {
-    background-color: aquamarine;
-}
-
-.timeStamp {
-    color: orange;
-    font-size: 15px;
-    margin-left: 10px;
-}
-
-.box-large {
-    width: 250px;
-    border: solid 1px #f0f0f0;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 5px 5px;
-}
-table {
-    width: 100%;
-}
-th {
-    text-align: left;
-}
-td {
-    text-align: right;
-}
-th, td {
-    color: white;
-}
-
-.titleContainer .mainContainer {
-    width: 25%;
-}
-.titleContainer, .timeContainer {
-    display: flex;
-}
-.timeContainer {
-    width: 75%;
-    justify-content: flex-end;
-    padding-right: 10px;
-}
-.timeBox{
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-    height: 50px;
-    width: 100px;
-    margin: 8px 3px;
-    border-radius: 5px;
-    border: solid 1px #f0f0f0;
-}
-.timeBox h5 {
-    font-size: 15px;
-    font-weight: 600;
-    margin: 0 0;
-}
-.timeBox h5, .titleContainer {
-    color: white;
-}
-h1 {
-    color: white;
-}
-.timeContent {
-    text-align: center;
-}
-
-.containerRow {
-    display: flex;
-    justify-content: center;
-}
-.box {
-    display: flex;
-    flex-direction: column;
-    color: white;
-    border: solid 1px #f0f0f0;
-    border-radius: 10px;
-    padding: 10px;
-    height: 100px;
-    width: 160px;
-    margin: 5px 5px;
-}
-
-.contentField {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+.mainTitleContainer {
+    background-color: rgb(235, 200, 83);
     height: 100%;
-    text-align: center;
+    width: 40%;
+    align-items: left;
 }
-.content {
+.title {
+    color: white;
+    text-align: left;
+    margin: 0px 0px;
+    height: 70%;
     width: 100%;
 }
-
-.mainContent, .subContent {
-    margin: 0 0;
-}
-
-.mainContent {
-    font-size: 25px;
-}
-.subContent {
-    font-size: 15px;
-}
-.box h5 {
+h1 {
     color: white;
-    font-size: 15px;
-    font-weight: 600;
-    margin: 0 0;
+    text-align: left;
+    margin: 0px 0px;
+}
+.timeStamp {
+    background-color: rgb(235, 83, 83);
+    height: 30%;
+    width: 100%;
+    text-align: left;
 }
