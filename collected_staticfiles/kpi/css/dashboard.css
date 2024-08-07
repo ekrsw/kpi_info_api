@@ -1,32 +1,66 @@
+h1{
+    color: white;
+    text-align: left;
+    margin: 0px 0px;
+}
+
 .page {
     display: flex;
 }
 
-.itemContainer {
-    background-color: blue;
-    margin: 5px 5px;
+.contents {
+    display: flex;
+    flex-direction: column;
 }
+
 .titleContainer {
     background-color: green;
+    height: 75px;
+    margin: 5px 5px;
+}
+
+.itemContainer {
+    background-color: #363636;
+    margin: 5px 5px;
+}
+
+.mainTitleContainer {
+    background-color: red;
+    height: 100%;
+    width: 40%;
+    align-items: left;
+}
+
+.timeContainer {
+    height: 100%;
+    width: 60%;
+}
+
+.title {
+    background-color: aquamarine;
+    text-align: left;
+    height: 70%;
+    width: 100%;
+    margin: 0px 0px;
+}
+
+.timeStamp {
+    background-color: rgb(177, 177, 39);
+    height: 30%;
+    width: 100%;
+    text-align: left;
+}
+
+.title, .timeStamp {
+    margin-left: 5px;
 }
 
 .itemContainer, .titleContainer {
     width: 100%;
     align-items: center;
-
     max-width: 800px;
     /*border:solid 1px #dfdfdf;*/
     /*border-radius: 10px;*/
-}
-
-h1 {
-    background-color: aquamarine;
-}
-
-.timeStamp {
-    color: orange;
-    font-size: 15px;
-    margin-left: 10px;
 }
 
 .box-large {
@@ -49,11 +83,9 @@ th, td {
     color: white;
 }
 
-.titleContainer .mainContainer {
-    width: 25%;
-}
 .titleContainer, .timeContainer {
     display: flex;
+    color: white;
 }
 .timeContainer {
     width: 75%;
@@ -62,6 +94,7 @@ th, td {
 }
 .timeBox{
     display: flex;
+    color: white;
     flex-direction: column;
     padding: 5px;
     height: 50px;
@@ -75,20 +108,27 @@ th, td {
     font-weight: 600;
     margin: 0 0;
 }
-.timeBox h5, .titleContainer {
-    color: white;
-}
+
 h1 {
     color: white;
 }
 .timeContent {
     text-align: center;
+    width: 100%;
 }
 
 .containerRow {
     display: flex;
-    justify-content: center;
+    justify-content: left;
+    width: 100%;
 }
+
+.containerMainKPI {
+    display: flex;
+    justify-content: left;
+    width: 100%;
+}
+
 .box {
     display: flex;
     flex-direction: column;
@@ -97,7 +137,6 @@ h1 {
     border-radius: 10px;
     padding: 10px;
     height: 100px;
-    width: 160px;
     margin: 5px 5px;
 }
 
@@ -127,4 +166,25 @@ h1 {
     font-size: 15px;
     font-weight: 600;
     margin: 0 0;
+}
+
+.contents, .titleContainer, .itemContainer {
+    width: 100%;
+    height: 100%;
+    max-width: 1300px;
+    min-width: 800px;
+}
+
+.itemContainer {
+    max-height: 500px;
+    min-height: 500px;
+}
+
+.box {
+    max-width: 222px;
+    min-width: none;
+    max-height: 100px;
+    min-height: none;
+    width: 25%;
+    height: 300px;
 }
