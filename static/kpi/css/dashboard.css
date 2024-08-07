@@ -1,190 +1,83 @@
-h1{
+.contents {
+    background-color: rgb(83, 164, 235);
+    display: flex;
+    flex-direction: column;
+}
+.titleContainer {
+    background-color: rgb(83, 235, 182);
+    display: flex;
+    height: 75px;
+    margin-bottom: 3px;
+    padding: 5px;
+}
+.mainTitleContainer {
+    background-color: rgb(235, 200, 83);
+    height: 100%;
+    width: 40%;
+    align-items: left;
+    vertical-align: middle;
+}
+.itemContainer {
+    background-color: rgb(133, 86, 164);
+}
+.containerMainKPI {
+    justify-content: space-between;
+    width: 100%;
+}
+.containerMainKPI, .containerRow {
+    display: flex;
+    padding: 5px;
+}
+.timeContainer {
+    background-color: rosybrown;
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+    width: 60%;
+}
+.title {
+    color: white;
+    text-align: left;
+    margin: 0px 0px;
+    height: 70%;
+    width: 100%;
+}
+h1, h5 {
     color: white;
     text-align: left;
     margin: 0px 0px;
 }
-
-.page {
-    display: flex;
-}
-
-.contents {
-    display: flex;
-    flex-direction: column;
-}
-
-.titleContainer {
-    background-color: green;
-    height: 75px;
-    margin: 5px 5px;
-}
-
-.itemContainer {
-    background-color: #363636;
-    margin: 5px 5px;
-}
-
-.mainTitleContainer {
-    background-color: red;
-    height: 100%;
-    width: 40%;
-    align-items: left;
-}
-
-.timeContainer {
-    height: 100%;
-    width: 60%;
-}
-
-.title {
-    background-color: aquamarine;
-    text-align: left;
-    height: 70%;
-    width: 100%;
-    margin: 0px 0px;
-}
-
 .timeStamp {
-    background-color: rgb(177, 177, 39);
+    background-color: rgb(235, 83, 83);
     height: 30%;
     width: 100%;
     text-align: left;
 }
 
-.title, .timeStamp {
-    margin-left: 5px;
+.box {
+    flex: 1;
 }
 
-.itemContainer, .titleContainer {
-    width: 100%;
-    align-items: center;
-    max-width: 800px;
-    /*border:solid 1px #dfdfdf;*/
-    /*border-radius: 10px;*/
-}
-
-.box-large {
-    width: 250px;
-    border: solid 1px #f0f0f0;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 5px 5px;
-}
-table {
-    width: 100%;
-}
-th {
-    text-align: left;
-}
-td {
-    text-align: right;
-}
-th, td {
-    color: white;
-}
-
-.titleContainer, .timeContainer {
-    display: flex;
-    color: white;
-}
-.timeContainer {
-    width: 75%;
-    justify-content: flex-end;
-    padding-right: 10px;
-}
-.timeBox{
-    display: flex;
-    color: white;
-    flex-direction: column;
-    padding: 5px;
-    height: 50px;
-    width: 100px;
-    margin: 8px 3px;
+.box, .box-large, .timeBox {
+    background-color:rgb(77, 190, 243);
+    opacity: 0.8;
     border-radius: 5px;
-    border: solid 1px #f0f0f0;
-}
-.timeBox h5 {
-    font-size: 15px;
-    font-weight: 600;
-    margin: 0 0;
+    border: solid 1px black;
 }
 
-h1 {
-    color: white;
+
+
+
+
+
+
+.timeBox {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    padding: 5px;
+    margin-left: 5px;
 }
 .timeContent {
     text-align: center;
-    width: 100%;
-}
-
-.containerRow {
-    display: flex;
-    justify-content: left;
-    width: 100%;
-}
-
-.containerMainKPI {
-    display: flex;
-    justify-content: left;
-    width: 100%;
-}
-
-.box {
-    display: flex;
-    flex-direction: column;
-    color: white;
-    border: solid 1px #f0f0f0;
-    border-radius: 10px;
-    padding: 10px;
-    height: 100px;
-    margin: 5px 5px;
-}
-
-.contentField {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 100%;
-    text-align: center;
-}
-.content {
-    width: 100%;
-}
-
-.mainContent, .subContent {
-    margin: 0 0;
-}
-
-.mainContent {
-    font-size: 25px;
-}
-.subContent {
-    font-size: 15px;
-}
-.box h5 {
-    color: white;
-    font-size: 15px;
-    font-weight: 600;
-    margin: 0 0;
-}
-
-.contents, .titleContainer, .itemContainer {
-    width: 100%;
-    height: 100%;
-    max-width: 1300px;
-    min-width: 800px;
-}
-
-.itemContainer {
-    max-height: 500px;
-    min-height: 500px;
-}
-
-.box {
-    max-width: 222px;
-    min-width: none;
-    max-height: 100px;
-    min-height: none;
-    width: 25%;
-    height: 300px;
 }
