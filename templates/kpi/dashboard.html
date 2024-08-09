@@ -44,7 +44,7 @@
                             <div class="content">
                                 <p class="mainContent">{{ kpi_object.response_rate|percentage }} %</p>
                                 <p class="subContent">{{ kpi_object.responses }} / {{ kpi_object.total_calls }}</p>
-                                <p class="subContent">-</p>
+                                <p class="buffer">-</p>
                             </div>
                         </div>
                     </div>
@@ -56,7 +56,8 @@
                             <div class="content">
                                 <p class="mainContent">{{ kpi_object.direct_handling_rate|percentage }} %</p>
                                 <p class="subContent">{{ kpi_object.direct_handling }} / {{ kpi_object.phone_inquiries }}</p>
-                                <p class="subContent">Buffer: 0</p>
+                                {% buffer 0.35 kpi_object.direct_handling kpi_object.phone_inquiries as buffer_d %}
+                                <p class="subContent">Buffer: <span class="buffer">{{ buffer_d }}</span></p>
                             </div>
                         </div>
                     </div>
@@ -69,7 +70,8 @@
                                 <p class="mainContent">{{ kpi_object.cumulative_callback_rate_under_20_min|percentage }} %</p>
                                 {% add_values kpi_object.cumulative_callback_under_60_min kpi_object.callback_count_over_60_min kpi_object.waiting_for_callback_over_20min as result_20 %}
                                 <p class="subContent">{{ kpi_object.cumulative_callback_under_20_min }} / {{ result_20 }}（滞: {{kpi_object.waiting_for_callback_over_20min}}）</p>
-                                <p class="subContent">Buffer: 0</p>
+                                {% buffer 0.8 kpi_object.cumulative_callback_under_20_min result_20 as buffer_20 %}
+                                <p class="subContent">Buffer: <span class="buffer">{{ buffer_20 }}</span></p>
                             </div>
                         </div>
                     </div>
@@ -95,7 +97,8 @@
                                 <p class="mainContent">{{ kpi_object.cumulative_callback_rate_under_40_min|percentage }} %</p>
                                 {% add_values kpi_object.cumulative_callback_under_60_min kpi_object.callback_count_over_60_min kpi_object.waiting_for_callback_over_40min as result_40 %}
                                 <p class="subContent">{{ kpi_object.cumulative_callback_under_40_min }} / {{ result_40 }}（滞: {{kpi_object.waiting_for_callback_over_40min}}）</p>
-                                <p class="subContent">Buffer: 0</p>
+                                {% buffer 0.9 kpi_object.cumulative_callback_under_40_min result_40 as buffer_40 %}
+                                <p class="subContent">Buffer: <span class="buffer">{{ buffer_40 }}</span></p>
                             </div>
                         </div>
                     </div>

@@ -89,7 +89,7 @@ h1, h5 {
     font-size: 30px;
     margin: 0 0;
 }
-.subContent {
+.subContent, .buffer {
     font-size: 17px;
     margin: 0 0;
 }
@@ -125,4 +125,12 @@ th {
 }
 td {
     text-align: right;
+}
+
+.negative {
+    color: red;
+}
+
+.positive {
+    color: green;
 }
