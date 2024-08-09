@@ -20,6 +20,7 @@
 }
 .itemContainer {
     background-color: rgb(133, 86, 164);
+    height: 400px;
 }
 .containerMainKPI {
     background-color: aqua;
@@ -30,6 +31,7 @@
     background-color: rgb(243, 159, 159);
     justify-content: space-between;
     width: 100%;
+    flex: 1;
 }
 .containerMainKPI, .containerRow {
     display: flex;
@@ -114,4 +116,13 @@ h1, h5 {
 }
 .timeContent {
     text-align: center;
+}
+table {
+    width: 100%;
+}
+th {
+    text-align: left;
+}
+td {
+    text-align: right;
 }
