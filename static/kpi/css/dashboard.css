@@ -29,11 +29,9 @@
 }
 .containerRow {
     background-color: rgb(243, 159, 159);
-    justify-content: space-between;
     width: 100%;
-    flex: 1;
 }
-.containerMainKPI, .containerRow {
+.containerMainKPI {
     display: flex;
 }
 .boxContainer {
@@ -41,10 +39,16 @@
     width: 20%;
 }
 .statsContainer {
-    background-color: rgb(85, 247, 85);
+    background-color: aquamarine;
+}
+.wfcContainer {
+    background-color: rgb(216, 150, 216);
+    height: 150px
+}
+.statsContainer, .wfcContainer {
     display: flex;
     align-items: left;
-    width: 25%;
+    width: 30%;
     padding: 5px;
 }
 .timeContainer {
@@ -76,7 +80,7 @@ h1, h5 {
     text-align: left;
 }
 
-.box, .box-large, .timeBox {
+.box, .box-large, .timeBox, .box-wfc {
     background-color:rgb(77, 190, 243);
     opacity: 0.8;
     border-radius: 10px;
@@ -110,7 +114,7 @@ h1, h5 {
 .box {
     padding: 5px;
 }
-.box-large {
+.box-large, .box-wfc {
     width: 100%;
     padding: 5px;
 }
