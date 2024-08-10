@@ -106,7 +106,7 @@
             </div>
             <div class="containerRow">    
                 <div class="statsContainer">
-                    <div class="box-large">
+                    <div class="statsBox">
                         <table class="stats">
                             <tr>
                                 <th>総着信数</th>
@@ -127,19 +127,25 @@
                         </table>
                     </div>
                 </div>
+                {% wfc kpi_object.wfc_20min_list kpi_object.wfc_30min_list kpi_object.wfc_40min_list kpi_object.wfc_60min_list as wfc_object %}
                 <div class="wfcContainer">
-                    <div class="box-wfc">
-                        <h5>滞留案件</h5>
-                        <table class="wfc">
-                            <tr>
-                                <th>案件: 11111111</th>
-                                <td>20分以上</td>
-                            </tr>
-                            <tr>
-                                <th>案件: 22222222</th>
-                                <td>40分以上</td>
-                            </tr>
-                        </table>
+                    <div class="wfcBox">
+                        <h5>20分以上滞留</h5>
+                        <ul>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="wfcContainer">
+                    <div class="wfcBox">
+                        <h5>30分以上滞留</h5>
+                        <p>aaaaaa</p>
+                    </div>
+                </div>
+                <div class="wfcContainer">
+                    <div class="wfcBox">
+                        <h5>40分以上滞留</h5>
+                        <p>aaaaaa</p>
                     </div>
                 </div>
             </div>
