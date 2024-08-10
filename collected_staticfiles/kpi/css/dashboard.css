@@ -24,33 +24,38 @@
 }
 .containerMainKPI {
     background-color: aqua;
+    display: flex;
     justify-content: space-between;
     width: 100%;
 }
 .containerRow {
     background-color: rgb(243, 159, 159);
-    width: 100%;
-}
-.containerMainKPI {
     display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 .boxContainer {
     padding: 5px;
     width: 20%;
+    height: 100%;
 }
 .statsContainer {
-    background-color: aquamarine;
-}
-.wfcContainer {
-    background-color: rgb(216, 150, 216);
-    height: 150px
-}
-.statsContainer, .wfcContainer {
+    background-color: rgb(255, 214, 127);
     display: flex;
     align-items: left;
-    width: 30%;
+    width: 40%;
+    height: 100%;
     padding: 5px;
 }
+.wfcContainer {
+    background-color: rgb(127, 144, 255);
+    display: flex;
+    align-items: left;
+    width: 20%;
+    height: 100%;
+    padding: 5px;
+}
+
 .timeContainer {
     background-color: rosybrown;
     display: flex;
@@ -70,7 +75,7 @@ h1, h5 {
     text-align: left;
     margin: 0px 0px;
 }
-.box h5 {
+.box h5, .wfcBox h5 {
     font-size: 18px;
 }
 .timeStamp {
@@ -80,7 +85,7 @@ h1, h5 {
     text-align: left;
 }
 
-.box, .box-large, .timeBox, .box-wfc {
+.box, .statsBox, .timeBox, .wfcBox {
     background-color:rgb(77, 190, 243);
     opacity: 0.8;
     border-radius: 10px;
@@ -114,7 +119,7 @@ h1, h5 {
 .box {
     padding: 5px;
 }
-.box-large, .box-wfc {
+.statsBox, .wfcBox {
     width: 100%;
     padding: 5px;
 }
@@ -124,9 +129,16 @@ h1, h5 {
 table {
     width: 100%;
 }
+.stats th {
+    color: white;
+}
+.wfc th {
+    font-weight: 100;
+}
 th {
     text-align: left;
 }
+
 td {
     text-align: right;
 }
