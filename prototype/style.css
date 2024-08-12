@@ -150,3 +150,7 @@ h1 {
         chartの設定
 
 -------------------------*/
+.chartContainer {
+    background-color: #cd49f5;
+    flex: 1;
+}
