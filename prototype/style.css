@@ -94,8 +94,19 @@ h1 {
 .contentField {
     background-color: #dced58;
     flex: 1;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
+.contentField p {
+    margin: 0 0;
+    text-align: center;
+}
+.rate {
+    font-size: 30px;
+}
+
+
 /* 下段：総着信数・留守電数等 */
 .subContainer {
     flex: 1;
