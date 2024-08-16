@@ -77,6 +77,7 @@ h1 {
 .mainContainer {
     display: flex;
     justify-items: stretch;
+    height: 152px;
 }
 
 .mainBox {
@@ -119,14 +120,18 @@ h1 {
 .subContainer {
     flex: 1;
     display: flex;
+    height: calc(100% - 152px);
 }
 
 .sideContainer {
+    display: flex;
+    flex-direction: column;
     width: 30%;
-    min-width: 300px;
+    height: 100%;
 }
 
 .statsContainer {
+    width: 100%;
     height: 200px;
     display: flex;
 }
@@ -155,6 +160,50 @@ h1 {
     font-size: 20px;
 }
 
+/* 滞留案件 */
+.delayContainer {
+    flex: 1;
+    display: flex;
+    width: 100%;
+}
+.delayBox {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border: solid 1px white;
+    margin: 5px 5px;
+    color: white;
+    height: calc(100% - 10px);
+}
+.delayBox h5 {
+    margin: 0 0;
+    font-size: 18px;
+    height: 22px;
+    color: white;
+    padding: 5px;
+}
+.tableContainer {
+    flex: 1;
+    background-color: aqua;
+    overflow-y: auto;
+}
+.delayTable {
+    width: calc(100% - 30px);
+    margin: 15px;
+    border-collapse: collapse;
+}
+.delayTable th {
+    background-color: #404040;
+    border-bottom: solid 1px white;
+}
+.delayTable td {
+    text-align: center;
+    border-bottom: solid 1px white;
+}
+
+
+
 /*-------------------------
 
         chartの設定
@@ -163,4 +212,5 @@ h1 {
 .chartContainer {
     flex: 1;
     color: white;
+    width: 70%;
 }
