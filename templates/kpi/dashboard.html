@@ -12,102 +12,81 @@
 
 {% block content %}
 {% load custom_filters %}
-
 <div class="page">
-    <div class="contents">
-        <div class="titleContainer">
-            <div class="mainTitleContainer">
-                <div class="title"><h1>KPI速報 -TVS-</h1></div>
-                <div class="timeStamp">{{ kpi_object.created_at }} 現在</div>
+    <div class="titleContainer">
+        <div class="mainTitle">
+            <h1>KPI速報</h1>
+            <p>{{ kpi_object.created_at }} 現在</p>
+        </div>
+        <div class="timeContainer">
+            <div class="timeBox">
+                <div class="timeTitle">現在の時刻</div>
+                <p id="current-time">00:00:00</p>
             </div>
-            <div class="timeContainer">
-                <div class="timeBox">
-                    <h5>現在の時刻</h5>
-                    <div class="timeContent" id="current-time">00:00:00</div>
+            <div class="timeBox">
+                <div class="timeTitle">20分前の時刻</div>
+                <p id="twenty-minutes-ago">00:00:00</p>
+            </div>
+            <div class="timeBox">
+                <div class="timeTitle">40分前の時刻</div>
+                <p id="forty-minutes-ago">00:00:00</p>
+            </div>
+        </div>
+    </div>
+    <div class="contentsContainer">
+        <div class="mainContainer">
+            <div class="mainBox">
+                <h5>応答率</h5>
+                <div class="contentField">
+                    <p class="rate">{{ kpi_object.response_rate|percentage }} %</p>
+                    <p>{{ kpi_object.responses }} / {{ kpi_object.total_calls }}</p>
+                    <p>-</p>
                 </div>
-                <div class="timeBox">
-                    <h5>20分前の時刻</h5>
-                    <div class="timeContent" id="twenty-minutes-ago">00:00:00</div>
+            </div>
+            <div class="mainBox">
+                <h5>直受け率</h5>
+                <div class="contentField">
+                    <p class="rate">{{ kpi_object.direct_handling_rate|percentage }} %</p>
+                    <p>{{ kpi_object.direct_handling }} / {{ kpi_object.phone_inquiries }}</p>
+                    {% buffer 0.35 kpi_object.direct_handling kpi_object.phone_inquiries as buffer_d %}
+                    <p class="subContent">Buffer: <span class="buffer">{{ buffer_d }}</span></p>
                 </div>
-                <div class="timeBox">
-                    <h5>40分前の時刻</h5>
-                    <div class="timeContent" id="forty-minutes-ago">00:00:00</div>
+            </div>
+            <div class="mainBox">
+                <h5>20分以内折返し率</h5>
+                <div class="contentField">
+                    <p class="rate">{{ kpi_object.cumulative_callback_rate_under_20_min|percentage }} %</p>
+                    {% add_values kpi_object.cumulative_callback_under_60_min kpi_object.callback_count_over_60_min kpi_object.waiting_for_callback_over_20min as result_20 %}
+                    <p class="subContent">{{ kpi_object.cumulative_callback_under_20_min }} / {{ result_20 }}（滞: {{kpi_object.waiting_for_callback_over_20min}}）</p>
+                    {% buffer 0.8 kpi_object.cumulative_callback_under_20_min result_20 as buffer_20 %}
+                    <p class="subContent">Buffer: <span class="buffer">{{ buffer_20 }}</span></p>
+                </div>
+            </div>
+            <div class="mainBox">
+                <h5>30分以内折返し率</h5>
+                <div class="contentField">
+                    <p class="rate">{{ kpi_object.cumulative_callback_rate_under_30_min|percentage }} %</p>
+                    {% add_values kpi_object.cumulative_callback_under_60_min kpi_object.callback_count_over_60_min kpi_object.waiting_for_callback_over_30min as result_30 %}
+                    <p class="subContent">{{ kpi_object.cumulative_callback_under_30_min }} / {{ result_30 }}（滞: {{ kpi_object.waiting_for_callback_over_30min }}）</p>
+                    <p class="subContent">-</p>
+                </div>
+            </div>
+            <div class="mainBox">
+                <h5>40分以内折返し率</h5>
+                <div class="contentField">
+                    <p class="rate">{{ kpi_object.cumulative_callback_rate_under_40_min|percentage }} %</p>
+                    {% add_values kpi_object.cumulative_callback_under_60_min kpi_object.callback_count_over_60_min kpi_object.waiting_for_callback_over_40min as result_40 %}
+                    <p class="subContent">{{ kpi_object.cumulative_callback_under_40_min }} / {{ result_40 }}（滞: {{kpi_object.waiting_for_callback_over_40min}}）</p>
+                    {% buffer 0.9 kpi_object.cumulative_callback_under_40_min result_40 as buffer_40 %}
+                    <p class="subContent">Buffer: <span class="buffer">{{ buffer_40 }}</span></p>
                 </div>
             </div>
         </div>
-        <div class="itemContainer">
-            <div class="containerMainKPI">
-                <div class="boxContainer">
-                    <div class="box">
-                        <h5>応答率</h5>
-                        <div class="contentField">
-                            <div class="content">
-                                <p class="mainContent">{{ kpi_object.response_rate|percentage }} %</p>
-                                <p class="subContent">{{ kpi_object.responses }} / {{ kpi_object.total_calls }}</p>
-                                <p class="buffer">-</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="boxContainer">
-                    <div class="box">
-                        <h5>直受け率</h5>
-                        <div class="contentField">
-                            <div class="content">
-                                <p class="mainContent">{{ kpi_object.direct_handling_rate|percentage }} %</p>
-                                <p class="subContent">{{ kpi_object.direct_handling }} / {{ kpi_object.phone_inquiries }}</p>
-                                {% buffer 0.35 kpi_object.direct_handling kpi_object.phone_inquiries as buffer_d %}
-                                <p class="subContent">Buffer: <span class="buffer">{{ buffer_d }}</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="boxContainer">
-                    <div class="box">
-                        <h5>20分以内折返し率</h5>
-                        <div class="contentField">
-                            <div class="content">
-                                <p class="mainContent">{{ kpi_object.cumulative_callback_rate_under_20_min|percentage }} %</p>
-                                {% add_values kpi_object.cumulative_callback_under_60_min kpi_object.callback_count_over_60_min kpi_object.waiting_for_callback_over_20min as result_20 %}
-                                <p class="subContent">{{ kpi_object.cumulative_callback_under_20_min }} / {{ result_20 }}（滞: {{kpi_object.waiting_for_callback_over_20min}}）</p>
-                                {% buffer 0.8 kpi_object.cumulative_callback_under_20_min result_20 as buffer_20 %}
-                                <p class="subContent">Buffer: <span class="buffer">{{ buffer_20 }}</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="boxContainer">
-                    <div class="box">
-                        <h5>30分以内折返し率</h5>
-                        <div class="contentField">
-                            <div class="content">
-                                <p class="mainContent">{{ kpi_object.cumulative_callback_rate_under_30_min|percentage }} %</p>
-                                {% add_values kpi_object.cumulative_callback_under_60_min kpi_object.callback_count_over_60_min kpi_object.waiting_for_callback_over_30min as result_30 %}
-                                <p class="subContent">{{ kpi_object.cumulative_callback_under_30_min }} / {{ result_30 }}（滞: {{ kpi_object.waiting_for_callback_over_30min }}）</p>
-                                <p class="subContent">-</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="boxContainer">
-                    <div class="box">
-                        <h5>40分以内折返し率</h5>
-                        <div class="contentField">
-                            <div class="content">
-                                <p class="mainContent">{{ kpi_object.cumulative_callback_rate_under_40_min|percentage }} %</p>
-                                {% add_values kpi_object.cumulative_callback_under_60_min kpi_object.callback_count_over_60_min kpi_object.waiting_for_callback_over_40min as result_40 %}
-                                <p class="subContent">{{ kpi_object.cumulative_callback_under_40_min }} / {{ result_40 }}（滞: {{kpi_object.waiting_for_callback_over_40min}}）</p>
-                                {% buffer 0.9 kpi_object.cumulative_callback_under_40_min result_40 as buffer_40 %}
-                                <p class="subContent">Buffer: <span class="buffer">{{ buffer_40 }}</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="containerRow">    
+        <div class="subContainer">
+            <div class="sideContainer">
                 <div class="statsContainer">
                     <div class="statsBox">
-                        <table class="stats">
+                        <table class="statsTable">
                             <tr>
                                 <th>総着信数</th>
                                 <td>{{ kpi_object.total_calls }} 件</td>
@@ -127,27 +106,9 @@
                         </table>
                     </div>
                 </div>
-                {% wfc kpi_object.wfc_20min_list kpi_object.wfc_30min_list kpi_object.wfc_40min_list kpi_object.wfc_60min_list as wfc_object %}
-                <div class="wfcContainer">
-                    <div class="wfcBox">
-                        <h5>20分以上滞留</h5>
-                        <ul>
-                            <li></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="wfcContainer">
-                    <div class="wfcBox">
-                        <h5>30分以上滞留</h5>
-                        <p>aaaaaa</p>
-                    </div>
-                </div>
-                <div class="wfcContainer">
-                    <div class="wfcBox">
-                        <h5>40分以上滞留</h5>
-                        <p>aaaaaa</p>
-                    </div>
-                </div>
+            </div>
+            <div class="chartContainer">
+                <div id="my_dataviz"></div>
             </div>
         </div>
     </div>
@@ -155,5 +116,8 @@
 {% endblock %}
 
 {% block scripts %}{% load static %}
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script src="{% static 'kpi/js/dashboard.js' %}"></script>
+<script src="{% static 'kpi/js/chart.js' %}"></script>
 {% endblock %}
