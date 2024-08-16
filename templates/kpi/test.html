@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block content %}
+{% load custom_filters %}
+{% wfc kpi_object.wfc_20min_list kpi_object.wfc_30min_list kpi_object.wfc_40min_list kpi_object.wfc_60min_list as w %}
+<h1>{{ w }}</h1>
+
+{% for k, v in w.items %}
+    {% for i in v %}
+        <h1>{{ k }}: {{ i }}</h1>
+    {% endfor %}
+{% endfor %}
+
+{% endblock %}

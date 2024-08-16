@@ -33,20 +33,32 @@ def buffer(r, n, c):
 
 @register.simple_tag
 def wfc(wfc_20, wfc_30, wfc_40, wfc_60):
-    wfc_20 = set(wfc_20.split(','))
-    wfc_30 = set(wfc_30.split(','))
-    wfc_40 = set(wfc_40.split(','))
-    wfc_60 = set(wfc_60.split(','))
+    if wfc_20:
+        wfc_20 = set(wfc_20.split(','))
+    else:
+        wfc_20 = set()
+    if wfc_30:
+        wfc_30 = set(wfc_30.split(','))
+    else:
+        wfc_30 = set()
+    if wfc_40:
+        wfc_40 = set(wfc_40.split(','))
+    else:
+        wfc_40 = set()
+    if wfc_60:
+        wfc_60 = set(wfc_60.split(','))
+    else:
+        wfc_60 = set()
 
     wfc_20 = wfc_20 - wfc_30
     wfc_30 = wfc_30 - wfc_40
     wfc_40 = wfc_40 - wfc_60
 
     context = {
-        '60分以上': wfc_60,
-        '40分以上': wfc_40,
-        '30分以上': wfc_30,
-        '20分以上': wfc_20
+        '60分': wfc_60,
+        '40分': wfc_40,
+        '30分': wfc_30,
+        '20分': wfc_20
     }
 
     return context

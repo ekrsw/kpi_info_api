@@ -109,40 +109,21 @@
                 <div class="delayContainer">
                     <div class="delayBox">
                         <h5>滞留案件</h5>
+                        {% wfc kpi_object.wfc_20min_list kpi_object.wfc_30min_list kpi_object.wfc_40min_list kpi_object.wfc_60min_list as w %}
                         <div class="tableContainer">
                             <table class="delayTable">
                                 <tr>
                                     <th>案件番号</th>
                                     <th>滞留時間</th>
                                 </tr>
+                                {% for k, v in w.items %}
+                                {% for i in v %}
                                 <tr>
-                                    <td>12345678</td>
-                                    <td>20分</td>
+                                    <td>{{ i }}</td>
+                                    <td>{{ k }}</td>
                                 </tr>
-                                <tr>
-                                    <td>12345678</td>
-                                    <td>20分</td>
-                                </tr>
-                                <tr>
-                                    <td>12345678</td>
-                                    <td>20分</td>
-                                </tr>
-                                <tr>
-                                    <td>12345678</td>
-                                    <td>20分</td>
-                                </tr>
-                                <tr>
-                                    <td>12345678</td>
-                                    <td>20分</td>
-                                </tr>
-                                <tr>
-                                    <td>12345678</td>
-                                    <td>20分</td>
-                                </tr>
-                                <tr>
-                                    <td>12345678</td>
-                                    <td>20分</td>
-                                </tr>
+                                {% endfor %}
+                                {% endfor %}
                             </table>
                         </div>
                     </div>
