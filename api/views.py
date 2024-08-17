@@ -1,6 +1,6 @@
 import datetime
 
-from django.utils.dateparse import parse_datetime
+from django.utils.dateparse import parse_date, parse_datetime
 from django.utils.timezone import make_aware
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -44,6 +44,35 @@ class KPIModelView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.data)
 
+
+class KPIModelByLatestDateView(APIView):
+    permission_classes = [HasAPIKey | IsAuthenticated]
+    serializer_class = KPIModelSerializer
+        
+    def get(self, request, date_str):
+        created_at_date = parse_date(date_str)
+        if not created_at_date:
+            return Response({'error': "Invalid date format"}, status=status.HTTP_400_BAD_REQUEST)
+
+        # 指定された日付の0時から24時までの範囲を設定
+        start_datetime = datetime.datetime.combine(created_at_date, datetime.datetime.min.time())
+        end_datetime = start_datetime + datetime.timedelta(days=1)
+
+        # 30分間隔でデータをフィルタリング
+        queryset = KPIModel.objects.filter(created_at__gte=start_datetime, created_at__lt=end_datetime)
+        filtered_data = []
+        current_time = start_datetime
+
+        while current_time < end_datetime:
+            data_point = queryset.filter(created_at__gte=current_time, created_at__lt=current_time + datetime.timedelta(minutes=30)).first()
+            if data_point:
+                filtered_data.append(data_point)
+            current_time += datetime.timedelta(minutes=30)
+        
+        # シリアライズしてレスポンスを返す
+        serializer = self.serializer_class(filtered_data, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
 
 class OperatorsListView(APIView):
     permission_classes = [HasAPIKey | IsAuthenticated]

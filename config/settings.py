@@ -42,10 +42,13 @@ INSTALLED_APPS = [
     'rest_framework_api_key',
     'accounts',
     'api',
+    'corsheaders', # CORSの設定
     'kpi',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', # CORSの設定
+    'django.middleware.common.CommonMiddleware', # CORSの設定
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -140,3 +143,32 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 LOGIN_REDIRECT_URL = 'knowledge:maintenance_list'
 # LOGOUT_REDIRECT_URL = 'accounts:logout'
 LOGIN_URL = 'accounts:login'
+
+# CORSの設定
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    "http://cti-12880310",
+    "http://127.0.0.1:5500",
+]
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-api-key',
+    'x-csrftoken',
+    'x-requested-with',
+    ]
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
