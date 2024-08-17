@@ -158,6 +158,7 @@ h1 {
 
 .statsTable td {
     font-size: 20px;
+    text-align: right;
 }
 
 /* 滞留案件 */
