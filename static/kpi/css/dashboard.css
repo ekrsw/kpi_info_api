@@ -191,10 +191,12 @@ h1 {
 .delayTable {
     width: calc(100% - 30px);
     margin: 15px;
+    margin-top: 0px;
     border-collapse: collapse;
 }
 .delayTable th {
     background-color: #404040;
+    font-size: 13px;
 }
 .delayTable td {
     text-align: center;
