@@ -172,3 +172,15 @@ CORS_ALLOW_METHODS = [
     'POST',
     'PUT',
 ]
+
+# REST_FRAMEWORKの設定
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',  # 認証されたユーザーのみアクセス可能
+    ],
+}
