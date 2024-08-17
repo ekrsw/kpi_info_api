@@ -32,9 +32,9 @@ function updateNumberDisplay() {
         var buffer = parseInt(bufferElements[i].textContent, 10);
         
         if (buffer < 0) {
-            bufferElements[i].className = 'negative';
+            bufferElements[i].className = 'buffer negative';
         } else if (buffer > 0) {
-            bufferElements[i].className = 'positive';
+            bufferElements[i].className = 'buffer positive';
         } else {
             bufferElements[i].className = 'buffer';
         }
