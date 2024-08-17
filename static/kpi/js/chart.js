@@ -1,6 +1,6 @@
 // グラフの寸法と余白を設定する
 var margin = {top: 10, right: 100, bottom: 30, left: 30},
-    width = 460 - margin.left - margin.right,
+    width = 800 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
 // svgオブジェクトをページの本文に追加する。
