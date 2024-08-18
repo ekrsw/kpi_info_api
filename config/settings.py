@@ -184,3 +184,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',  # 認証されたユーザーのみアクセス可能
     ],
 }
+
+# API_KEYの設定
+API_KEY_CUSTOM_HEADER = 'HTTP_X_API_KEY'

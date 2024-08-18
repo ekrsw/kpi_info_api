@@ -1,7 +1,7 @@
 async function callAPI() {
   const host = "127.0.0.1";
   const port = "8000";
-  const api_key = "hAUw8qqH.Wf6QhMyHLyzpce8AaKUmphaL2oTlVvbs";
+  const api_key = "oOMqB3XA.dx1VbY6Y3YCP9zjHJDbo4uTEYQ123dxW";
 
   let headers = {
       "x-api-key": api_key,
@@ -10,7 +10,7 @@ async function callAPI() {
 
   try {
       const response = await fetch(
-        `http://${host}:${port}/api/kpi/20240817`,
+        `http://${host}:${port}/api/kpi/20240803`,
         {
           headers: headers,
           credentials: 'include'
