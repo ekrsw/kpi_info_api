@@ -1,5 +1,18 @@
-svg {
-    width: 320px;
-    height: 240px;
-    border: 1px solid black;
+body {
+    background-color: rgb(161, 130, 130);
+}
+
+/*-------------------------
+
+        chartの設定
+
+-------------------------*/
+.chartContainer {
+    flex: 1;
+    color: white;
+    width: 70%;
+}
+.domain {
+    font-size: 20px;
+    color: white;
 }
