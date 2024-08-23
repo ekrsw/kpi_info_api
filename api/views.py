@@ -1,7 +1,10 @@
 import datetime
+import logging
 
 from django.utils.dateparse import parse_date, parse_datetime
+from django.utils.decorators import method_decorator
 from django.utils.timezone import make_aware
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_api_key.permissions import HasAPIKey
@@ -10,6 +13,8 @@ from .serializers import KPIModelSerializer, OperatorSerializer
 from rest_framework import status
 from kpi.models import KPIModel, Operator
 
+
+@method_decorator(csrf_exempt, name='dispatch')
 class KPIModelView(APIView):
     permission_classes = [HasAPIKey | IsAuthenticated]
     serializer_class = KPIModelSerializer
@@ -45,6 +50,7 @@ class KPIModelView(APIView):
         return Response(serializer.data)
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class KPIModelByLatestDateView(APIView):
     permission_classes = [HasAPIKey | IsAuthenticated]
     serializer_class = KPIModelSerializer
@@ -72,8 +78,9 @@ class KPIModelByLatestDateView(APIView):
         # シリアライズしてレスポンスを返す
         serializer = self.serializer_class(filtered_data, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-    
 
+
+@method_decorator(csrf_exempt, name='dispatch')
 class OperatorsListView(APIView):
     permission_classes = [HasAPIKey | IsAuthenticated]
     serializer_class = OperatorSerializer
@@ -89,6 +96,8 @@ class OperatorsListView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+
+@method_decorator(csrf_exempt, name='dispatch')
 class OperatorDetailView(APIView):
     permission_classes = [HasAPIKey | IsAuthenticated]
     serializer_class = OperatorSerializer
