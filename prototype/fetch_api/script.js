@@ -4,7 +4,8 @@ const digit = 2;
 async function callApi() {
   const host = "127.0.0.1";
   const port = "8000";
-  const api_key = "0MakB4JS.oxUR39iNSCdlZG8qtnDn6NlmkmBQ55lA";
+  //const api_key = "0MakB4JS.oxUR39iNSCdlZG8qtnDn6NlmkmBQ55lA"; //会社PC
+  const api_key = "TG0XWvKy.DWmhVpgmCxZNAR7cFH8gkma5hz2nR1kQ" // 自宅PC
   const headers = {
     'x-api-key': api_key
   };
@@ -23,6 +24,26 @@ function renderDataToHTML (data) {
   function formatPercentage (value) {
     return Math.round(value * 100 * Math.pow(10, digit)) / 100;
   }
+
+  // Buffer計算関数
+  function calcBuffer (r, n, c) {
+    /* KPIを達成するためのBufferを計算
+    args:
+      r: KPIの目標値
+      n: 現在の達成件数
+      c: 分母
+    */
+    // KPIを達成できている場合は単純計算、できていない場合は少し複雑
+    if (c === 0) {
+      return "-";
+    } else if (n / c >= r) {
+      let b = (n / r) - c;
+      return Math.floor(b);
+    } else {
+      let b = (n - c * r) / (1 - r);
+      return Math.floor(b);
+    }
+  };
 
   // created_atのフォーマット
   const dateString = data.created_at;
@@ -115,3 +136,4 @@ async function init() {
 }
 
 init();
+setInterval(init, 10000);
