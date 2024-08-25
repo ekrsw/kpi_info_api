@@ -9,6 +9,13 @@ class LatestDashboardView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['kpi_object'] = KPIModel.objects.latest('created_at')
         return context
+    
+class LatestAPIDashboardView(TemplateView):
+    template_name = 'kpi/api_dashboard.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['kpi_object'] = KPIModel.objects.latest('created_at')
+        return context
 
 class OperatorsListView(ListView):
     model = Operator

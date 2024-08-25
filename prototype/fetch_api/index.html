@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Graph</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test</title>
 </head>
 <body>
-    <header></header>
-    <main>
-        <div class="page">
-            <svg id="myGraph"></svg>
-        </div>
-    </main>
-    <footer></footer>
+  <div id="created-at">0000-00-00 00:00:00 現在</div>
+  <div>
+    総着信数: <span id="total-calls">0</span>件
+  </div>
+  <div>
+    応答率: <span id="response-rate">00.00</span>%
+  </div>
+  <div><span id="responses">0</span> / <span id="total-calls-response">0</span></div>
 </body>
-<script src="http://d3js.org/d3.v7.min.js" charset="utf-8"></script>
 <script src="script.js"></script>
 </html>

@@ -1,0 +1,220 @@
+body {
+    background-color: black;
+}
+
+.page {
+    background-color: black;
+    height: calc(100vh - 20px);
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*------------------
+     titleの設定
+------------------*/
+h1 {
+    margin-top: 10px;
+}
+
+.titleContainer {
+    background-color: #1f1f1f;
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    padding-left: 20px;
+    margin-bottom: 5px;
+}
+
+.titleContainer h1, .titleContainer p {
+    color: white;
+}
+
+/* 時間表示 */
+.timeContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+/* timeBoxの設定 */
+/* 形状 */
+.timeBox {
+    border-radius: 10px;
+    border: solid 1px white;
+    width: 120px;
+    height: 80px;
+    margin: 5px;
+}
+
+/* font */
+.timeTitle {
+    font-weight: bold;
+    margin-top:5px;
+    margin-left: 5px;
+    color: white;
+}
+
+.timeBox p {
+    margin-top: 8px;
+    text-align: center;
+}
+
+
+/*----------------------
+     contentsの設定
+----------------------*/
+.contentsContainer {
+    background-color: #1f1f1f;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 応答率・直受け率・折返し率 */
+.mainContainer {
+    display: flex;
+    justify-items: stretch;
+    height: 152px;
+}
+
+.mainBox {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 130px;
+    margin: 5px;
+    border-radius: 10px;
+    border: solid 1px white;
+    padding: 5px;
+}
+
+/* mainBoxのタイトル */
+.mainBox h5 {
+    margin: 0 0;
+    font-size: 18px;
+    height: 22px;
+    color: white;
+}
+
+.contentField {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: white;
+}
+
+.contentField p {
+    margin: 0 0;
+    text-align: center;
+}
+
+.rate {
+    font-size: 30px;
+}
+
+/* 下段：総着信数・留守電数等 */
+.subContainer {
+    flex: 1;
+    display: flex;
+    height: calc(100% - 152px);
+}
+
+.sideContainer {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
+}
+
+.statsContainer {
+    width: 100%;
+    height: 200px;
+    display: flex;
+}
+
+.statsBox {
+    flex: 1;
+    display: flex;
+    border-radius: 10px;
+    border: solid 1px white;
+    margin: 5px 5px;
+    color: white;
+}
+
+/* statsテーブル */
+.statsTable{
+    flex: 1;
+    margin: 5px;
+}
+
+.statsTable th {
+    text-align: left;
+    font-size: 20px;
+}
+
+.statsTable td {
+    font-size: 20px;
+    text-align: right;
+}
+
+/* 滞留案件 */
+.delayContainer {
+    flex: 1;
+    display: flex;
+    width: 100%;
+}
+.delayBox {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border: solid 1px white;
+    margin: 5px 5px;
+    color: white;
+    height: calc(100% - 10px);
+}
+.delayBox h5 {
+    margin: 0 0;
+    font-size: 18px;
+    height: 22px;
+    color: white;
+    padding: 5px;
+}
+.tableContainer {
+    flex: 1;
+    overflow-y: auto;
+}
+.delayTable {
+    width: calc(100% - 30px);
+    margin: 15px;
+    margin-top: 0px;
+    border-collapse: collapse;
+}
+.delayTable th {
+    background-color: #404040;
+    font-size: 13px;
+}
+.delayTable td {
+    text-align: center;
+    border-bottom: solid 1px white;
+}
+
+
+/*-------------------------
+
+        chartの設定
+
+-------------------------*/
+.chartContainer {
+    flex: 1;
+    color: white;
+    width: 70%;
+}
+.domain {
+    font-size: 20px;
+    color: white;
+}
