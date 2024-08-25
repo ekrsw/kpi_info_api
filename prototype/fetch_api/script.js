@@ -68,7 +68,7 @@ function renderDataToHTML (data) {
     data.waiting_for_callback_over_20min;
   WaitingForCallbackOver20Min.textContent = data.waiting_for_callback_over_20min;
 
-  
+
   /*
   <h5>20分以内折返し率</h5>
   <div class="contentField">
