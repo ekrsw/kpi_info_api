@@ -68,21 +68,31 @@ function renderDataToHTML (data) {
     data.waiting_for_callback_over_20min;
   WaitingForCallbackOver20Min.textContent = data.waiting_for_callback_over_20min;
 
-
-  /*
-  <h5>20分以内折返し率</h5>
-  <div class="contentField">
-      <p class="rate">{{ kpi_object.cumulative_callback_rate_under_20_min|percentage }} %</p>
-      {% add_values kpi_object.cumulative_callback_under_60_min kpi_object.callback_count_over_60_min kpi_object.waiting_for_callback_over_20min as result_20 %}
-      <p class="subContent">{{ kpi_object.cumulative_callback_under_20_min }} / {{ result_20 }}（滞: {{kpi_object.waiting_for_callback_over_20min}}）</p>
-      {% buffer 0.8 kpi_object.cumulative_callback_under_20_min result_20 as buffer_20 %}
-      <p class="subContent">Buffer: <span class="buffer">{{ buffer_20 }}</span></p>
-  </div>
-  */
-
   // 30分以内折返し率
+  const cumulativeCallbackRateUnder30Min = document.getElementById("cumulative-callback-rate-under-30-min");
+  const cumulativeCallbackUnder30Min = document.getElementById("cumulative-callback-under-30-min");
+  const cumulativeCallbackUnder60MinPlusWfc30 = document.getElementById("cumulative-callback-under-60-min-plus-wfc30");
+  const WaitingForCallbackOver30Min = document.getElementById("waiting-for-callback-over-30min");
+  cumulativeCallbackRateUnder30Min.textContent = formatPercentage(data.cumulative_callback_rate_under_30_min);
+  cumulativeCallbackUnder30Min.textContent = data.cumulative_callback_under_30_min
+  cumulativeCallbackUnder60MinPlusWfc30.textContent =
+    data.cumulative_callback_under_60_min +
+    data.callback_count_over_60_min +
+    data.waiting_for_callback_over_30min;
+  WaitingForCallbackOver30Min.textContent = data.waiting_for_callback_over_30min;
 
   // 40分以内折返し率
+  const cumulativeCallbackRateUnder40Min = document.getElementById("cumulative-callback-rate-under-40-min");
+  const cumulativeCallbackUnder40Min = document.getElementById("cumulative-callback-under-40-min");
+  const cumulativeCallbackUnder60MinPlusWfc40 = document.getElementById("cumulative-callback-under-60-min-plus-wfc40");
+  const WaitingForCallbackOver40Min = document.getElementById("waiting-for-callback-over-40min");
+  cumulativeCallbackRateUnder40Min.textContent = formatPercentage(data.cumulative_callback_rate_under_40_min);
+  cumulativeCallbackUnder40Min.textContent = data.cumulative_callback_under_40_min
+  cumulativeCallbackUnder60MinPlusWfc40.textContent =
+    data.cumulative_callback_under_60_min +
+    data.callback_count_over_60_min +
+    data.waiting_for_callback_over_40min;
+  WaitingForCallbackOver40Min.textContent = data.waiting_for_callback_over_40min;
 
   // 総着信数
   totalCalls.textContent = data.total_calls;
