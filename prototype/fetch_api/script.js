@@ -4,8 +4,8 @@ const digit = 2;
 async function callApi() {
   const host = "127.0.0.1";
   const port = "8000";
-  //const api_key = "0MakB4JS.oxUR39iNSCdlZG8qtnDn6NlmkmBQ55lA"; //会社PC
-  const api_key = "TG0XWvKy.DWmhVpgmCxZNAR7cFH8gkma5hz2nR1kQ" // 自宅PC
+  const api_key = "0MakB4JS.oxUR39iNSCdlZG8qtnDn6NlmkmBQ55lA"; //会社PC
+  //const api_key = "TG0XWvKy.DWmhVpgmCxZNAR7cFH8gkma5hz2nR1kQ" // 自宅PC
   const headers = {
     'x-api-key': api_key
   };
@@ -72,9 +72,11 @@ function renderDataToHTML (data) {
   const directHandlingRate = document.getElementById("direct-handling-rate");
   const directHandring = document.getElementById("direct-handling");
   const phoneInquiries = document.getElementById("phone-inquiries");
+  const BufferDirectHandlingRate = document.getElementById("buffer-direct-handling-rate");
   directHandlingRate.textContent = formatPercentage(data.direct_handling_rate);
   directHandring.textContent = data.direct_handling;
   phoneInquiries.textContent = data.phone_inquiries;
+  BufferDirectHandlingRate.textContent = calcBuffer(0.35, data.direct_handling, data.phone_inquiries);
   
   // 20分以内折返し率
   const cumulativeCallbackRateUnder20Min = document.getElementById("cumulative-callback-rate-under-20-min");
@@ -116,6 +118,7 @@ function renderDataToHTML (data) {
   WaitingForCallbackOver40Min.textContent = data.waiting_for_callback_over_40min;
 
   // 総着信数
+  const totalCalls = document.getElementById("total-calls");
   totalCalls.textContent = data.total_calls;
 
   // 放棄呼数
