@@ -48,8 +48,37 @@ function renderDataToHTML (data) {
   totalCallsResponse.textContent = data.total_calls;
 
   // 直受け率
+  const directHandlingRate = document.getElementById("direct-handling-rate");
+  const directHandring = document.getElementById("direct-handling");
+  const phoneInquiries = document.getElementById("phone-inquiries");
+  directHandlingRate.textContent = formatPercentage(data.direct_handling_rate);
+  directHandring.textContent = data.direct_handling;
+  phoneInquiries.textContent = data.phone_inquiries;
   
   // 20分以内折返し率
+  const cumulativeCallbackRateUnder20Min = document.getElementById("cumulative-callback-rate-under-20-min");
+  const cumulativeCallbackUnder20Min = document.getElementById("cumulative-callback-under-20-min");
+  const cumulativeCallbackUnder60MinPlusWfc20 = document.getElementById("cumulative-callback-under-60-min-plus-wfc20");
+  const WaitingForCallbackOver20Min = document.getElementById("waiting-for-callback-over-20min");
+  cumulativeCallbackRateUnder20Min.textContent = formatPercentage(data.cumulative_callback_rate_under_20_min);
+  cumulativeCallbackUnder20Min.textContent = data.cumulative_callback_under_20_min
+  cumulativeCallbackUnder60MinPlusWfc20.textContent =
+    data.cumulative_callback_under_60_min +
+    data.callback_count_over_60_min +
+    data.waiting_for_callback_over_20min;
+  WaitingForCallbackOver20Min.textContent = data.waiting_for_callback_over_20min;
+
+  
+  /*
+  <h5>20分以内折返し率</h5>
+  <div class="contentField">
+      <p class="rate">{{ kpi_object.cumulative_callback_rate_under_20_min|percentage }} %</p>
+      {% add_values kpi_object.cumulative_callback_under_60_min kpi_object.callback_count_over_60_min kpi_object.waiting_for_callback_over_20min as result_20 %}
+      <p class="subContent">{{ kpi_object.cumulative_callback_under_20_min }} / {{ result_20 }}（滞: {{kpi_object.waiting_for_callback_over_20min}}）</p>
+      {% buffer 0.8 kpi_object.cumulative_callback_under_20_min result_20 as buffer_20 %}
+      <p class="subContent">Buffer: <span class="buffer">{{ buffer_20 }}</span></p>
+  </div>
+  */
 
   // 30分以内折返し率
 
