@@ -45,6 +45,27 @@ function renderDataToHTML (data) {
     };
   };
 
+  // 滞留案件のstrをオブジェクトに変換する関数
+  function wfc(wfc_20, wfc_30, wfc_40, wfc_60) {
+    wfc_20 = wfc_20 ? new Set(wfc_20.split(',')) : new Set();
+    wfc_30 = wfc_30 ? new Set(wfc_30.split(',')) : new Set();
+    wfc_40 = wfc_40 ? new Set(wfc_40.split(',')) : new Set();
+    wfc_60 = wfc_60 ? new Set(wfc_60.split(',')) : new Set();
+
+    wfc_20 = new Set([...wfc_20].filter(x => !wfc_30.has(x)));
+    wfc_30 = new Set([...wfc_30].filter(x => !wfc_40.has(x)));
+    wfc_40 = new Set([...wfc_40].filter(x => !wfc_60.has(x)));
+
+    const context = {
+      '60分': wfc_60,
+      '40分': wfc_40,
+      '30分': wfc_30,
+      '20分': wfc_20
+    };
+
+    return context;
+  };
+
   // created_atのフォーマット
   const dateString = data.created_at;
   const date = new Date(dateString);
@@ -158,13 +179,42 @@ function renderDataToHTML (data) {
   // 留守電数
   const voicemails = document.getElementById("voicemails");
   voicemails.textContent = data.voicemails;
-
+  
   // 電話問い合わせ件数
   const phoneInquiries = document.getElementById("phone-inquiries");
   phoneInquiries.textContent = data.phone_inquiries;
 
-  // 滞留案件
+  /*-----------------------
+      電話問い合わせ件数
+  -----------------------*/
+  // 関数を呼び出し
+  const result = wfc(data.wfc_20min_list, data.wfc_30min_list, data.wfc_40min_list, data.wfc_60min_list);
+  // テーブル要素を取得
+  const table = document.getElementById('wfcTable');
+  // ヘッダー行以外をクリア
+  while (table.rows.length > 1) {
+    table.deleteRow(1);  // 常に1番目の行を削除していく
+  }
+  // 各時間帯ごとにループ
+  for (const [time, set] of Object.entries(result)) {
+    for (const value of set) {
+        // 新しい行とセルを作成
+        const row = document.createElement('tr');
+        const cell1 = document.createElement('td');
+        const cell2 = document.createElement('td');
 
+        // セルにデータを設定
+        cell1.textContent = value;
+        cell2.textContent = time;
+
+        // 行にセルを追加
+        row.appendChild(cell1);
+        row.appendChild(cell2);
+
+        // テーブルに行を追加
+        table.appendChild(row);
+    }
+  }
 }
 
 async function init() {
