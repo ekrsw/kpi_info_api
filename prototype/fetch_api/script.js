@@ -5,7 +5,7 @@ async function callApi() {
   const host = "127.0.0.1";
   const port = "8000";
   const api_key = "0MakB4JS.oxUR39iNSCdlZG8qtnDn6NlmkmBQ55lA"; //会社PC
-  //const api_key = "TG0XWvKy.DWmhVpgmCxZNAR7cFH8gkma5hz2nR1kQ" // 自宅PC
+  //const api_key = "TG0XWvKy.DWmhVpgmCxZNAR7cFH8gkma5hz2nR1kQ"; // 自宅PC
   const headers = {
     'x-api-key': api_key
   };
@@ -23,7 +23,7 @@ function renderDataToHTML (data) {
   // floatデータを％にフォーマットする関数
   function formatPercentage (value) {
     return Math.round(value * 100 * Math.pow(10, digit)) / 100;
-  }
+  };
 
   // Buffer計算関数
   function calcBuffer (r, n, c) {
@@ -42,7 +42,7 @@ function renderDataToHTML (data) {
     } else {
       let b = (n - c * r) / (1 - r);
       return Math.floor(b);
-    }
+    };
   };
 
   // created_atのフォーマット
@@ -60,74 +60,111 @@ function renderDataToHTML (data) {
   const created_at = document.getElementById("created-at");
   created_at.textContent = formattedDate + " 現在";
   
-  // 応答率
+  /*-----------------------
+           応答率 
+  -----------------------*/
   const responseRate = document.getElementById("response-rate");
   const responses = document.getElementById("responses");
   const totalCallsResponse = document.getElementById("total-calls-response");
   responseRate.textContent = formatPercentage(data.response_rate);
   responses.textContent = data.responses;
   totalCallsResponse.textContent = data.total_calls;
-
-  // 直受け率
+  /*-----------------------
+          直受け率
+  -----------------------*/
   const directHandlingRate = document.getElementById("direct-handling-rate");
   const directHandring = document.getElementById("direct-handling");
-  const phoneInquiries = document.getElementById("phone-inquiries");
+  const phoneInquiriesDirectRate = document.getElementById("phone-inquiries-direct-rate");
   const BufferDirectHandlingRate = document.getElementById("buffer-direct-handling-rate");
   directHandlingRate.textContent = formatPercentage(data.direct_handling_rate);
   directHandring.textContent = data.direct_handling;
-  phoneInquiries.textContent = data.phone_inquiries;
+  phoneInquiriesDirectRate.textContent = data.phone_inquiries;
   BufferDirectHandlingRate.textContent = calcBuffer(0.35, data.direct_handling, data.phone_inquiries);
   
-  // 20分以内折返し率
+  /*-----------------------
+      20分以内折返し率
+  -----------------------*/
   const cumulativeCallbackRateUnder20Min = document.getElementById("cumulative-callback-rate-under-20-min");
   const cumulativeCallbackUnder20Min = document.getElementById("cumulative-callback-under-20-min");
   const cumulativeCallbackUnder60MinPlusWfc20 = document.getElementById("cumulative-callback-under-60-min-plus-wfc20");
   const WaitingForCallbackOver20Min = document.getElementById("waiting-for-callback-over-20min");
+  const BufferCumulativeCallbackUnder20MinRate = document.getElementById("buffer-cumulative-callback-under-20-rate");
   cumulativeCallbackRateUnder20Min.textContent = formatPercentage(data.cumulative_callback_rate_under_20_min);
-  cumulativeCallbackUnder20Min.textContent = data.cumulative_callback_under_20_min
-  cumulativeCallbackUnder60MinPlusWfc20.textContent =
+  cumulativeCallbackUnder20Min.textContent = data.cumulative_callback_under_20_min;
+  let cumulativeAndWfcOver20min =
     data.cumulative_callback_under_60_min +
     data.callback_count_over_60_min +
     data.waiting_for_callback_over_20min;
+  cumulativeCallbackUnder60MinPlusWfc20.textContent = cumulativeAndWfcOver20min;
   WaitingForCallbackOver20Min.textContent = data.waiting_for_callback_over_20min;
+  BufferCumulativeCallbackUnder20MinRate.textContent = calcBuffer(
+    0.80,
+    data.cumulative_callback_under_20_min,
+    cumulativeAndWfcOver20min
+  );
 
-  // 30分以内折返し率
+  /*-----------------------
+      30分以内折返し率
+  -----------------------*/
   const cumulativeCallbackRateUnder30Min = document.getElementById("cumulative-callback-rate-under-30-min");
   const cumulativeCallbackUnder30Min = document.getElementById("cumulative-callback-under-30-min");
   const cumulativeCallbackUnder60MinPlusWfc30 = document.getElementById("cumulative-callback-under-60-min-plus-wfc30");
   const WaitingForCallbackOver30Min = document.getElementById("waiting-for-callback-over-30min");
   cumulativeCallbackRateUnder30Min.textContent = formatPercentage(data.cumulative_callback_rate_under_30_min);
-  cumulativeCallbackUnder30Min.textContent = data.cumulative_callback_under_30_min
-  cumulativeCallbackUnder60MinPlusWfc30.textContent =
+  cumulativeCallbackUnder30Min.textContent = data.cumulative_callback_under_30_min;
+  let cumulativeAndWfcOver30min =
     data.cumulative_callback_under_60_min +
     data.callback_count_over_60_min +
     data.waiting_for_callback_over_30min;
+  cumulativeCallbackUnder60MinPlusWfc30.textContent = cumulativeAndWfcOver30min;
   WaitingForCallbackOver30Min.textContent = data.waiting_for_callback_over_30min;
 
-  // 40分以内折返し率
+  /*-----------------------
+      40分以内折返し率
+  -----------------------*/
   const cumulativeCallbackRateUnder40Min = document.getElementById("cumulative-callback-rate-under-40-min");
   const cumulativeCallbackUnder40Min = document.getElementById("cumulative-callback-under-40-min");
   const cumulativeCallbackUnder60MinPlusWfc40 = document.getElementById("cumulative-callback-under-60-min-plus-wfc40");
   const WaitingForCallbackOver40Min = document.getElementById("waiting-for-callback-over-40min");
+  const BufferCumulativeCallbackUnder40MinRate = document.getElementById("buffer-cumulative-callback-under-40-rate");
   cumulativeCallbackRateUnder40Min.textContent = formatPercentage(data.cumulative_callback_rate_under_40_min);
-  cumulativeCallbackUnder40Min.textContent = data.cumulative_callback_under_40_min
-  cumulativeCallbackUnder60MinPlusWfc40.textContent =
+  cumulativeCallbackUnder40Min.textContent = data.cumulative_callback_under_40_min;
+  let cumulativeAndWfcOver40min =
     data.cumulative_callback_under_60_min +
     data.callback_count_over_60_min +
     data.waiting_for_callback_over_40min;
+  cumulativeCallbackUnder60MinPlusWfc40.textContent = cumulativeAndWfcOver40min;
   WaitingForCallbackOver40Min.textContent = data.waiting_for_callback_over_40min;
+  BufferCumulativeCallbackUnder40MinRate.textContent = calcBuffer(
+    0.90,
+    data.cumulative_callback_under_40_min,
+    cumulativeAndWfcOver40min
+  );
 
+  /*-----------------------
+      総着信数
+      放棄呼数
+      留守電数
+      電話問い合わせ件数
+  -----------------------*/
   // 総着信数
   const totalCalls = document.getElementById("total-calls");
   totalCalls.textContent = data.total_calls;
 
   // 放棄呼数
+  const abandonedCalls = document.getElementById("abandoned-calls");
+  abandonedCalls.textContent = data.abandoned_calls;
 
   // 留守電数
+  const voicemails = document.getElementById("voicemails");
+  voicemails.textContent = data.voicemails;
 
   // 電話問い合わせ件数
+  const phoneInquiries = document.getElementById("phone-inquiries");
+  phoneInquiries.textContent = data.phone_inquiries;
 
   // 滞留案件
+
 }
 
 async function init() {
@@ -135,8 +172,8 @@ async function init() {
   console.log(data);
   if (data) {
     renderDataToHTML(data);
-  }
-}
+  };
+};
 
 init();
 setInterval(init, 10000);

@@ -7,9 +7,6 @@
 </head>
 <body>
   <div id="created-at">0000-00-00 00:00:00 現在</div>
-  <div>
-    総着信数: <span id="total-calls">0</span>件
-  </div>
   <hr>
   <div>
     応答率: <span id="response-rate">00.00</span>%
@@ -22,7 +19,7 @@
     直受け率: <span id="direct-handling-rate">00.00</span>%
   </div>
   <div>
-    <span id="direct-handling">0</span> / <span id="phone-inquiries">0</span>
+    <span id="direct-handling">0</span> / <span id="phone-inquiries-direct-rate">0</span>
   </div>
   <div>
     Buffer: <span id="buffer-direct-handling-rate">0</span>
@@ -33,6 +30,9 @@
   </div>
   <div>
     <span id="cumulative-callback-under-20-min">0</span> / <span id="cumulative-callback-under-60-min-plus-wfc20">0</span>(滞: <span id="waiting-for-callback-over-20min">0</span>)
+  </div>
+  <div>
+    Buffer: <span id="buffer-cumulative-callback-under-20-rate">0</span>
   </div>
   <hr>
   <div>
@@ -47,6 +47,22 @@
   </div>
   <div>
     <span id="cumulative-callback-under-40-min">0</span> / <span id="cumulative-callback-under-60-min-plus-wfc40">0</span>(滞: <span id="waiting-for-callback-over-40min">0</span>)
+  </div>
+  <div>
+    Buffer: <span id="buffer-cumulative-callback-under-40-rate">0</span>
+  </div>
+  <hr>
+  <div>
+    総着信数: <span id="total-calls">0</span>件
+  </div>
+  <div>
+    放棄呼数: <span id="abandoned-calls">0</span>件
+  </div>
+  <div>
+    留守電数: <span id="voicemails">0</span>件
+  </div>
+  <div>
+    電話問い合わせ件数: <span id="phone-inquiries">0</span>件
   </div>
   <hr>
 </body>
