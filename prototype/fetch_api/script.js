@@ -20,6 +20,12 @@ async function callApi() {
 
 // HTML描画関数
 function renderDataToHTML (data) {
+  /*-----------------------
+  各種関数:
+  - formatPercentage: floatデータを％にフォーマット
+  - calcBuffer: Buffer計算
+  - wfc: 滞留案件のstrをオブジェクトに変換
+  -----------------------*/
   // floatデータを％にフォーマットする関数
   function formatPercentage (value) {
     return Math.round(value * 100 * Math.pow(10, digit)) / 100;

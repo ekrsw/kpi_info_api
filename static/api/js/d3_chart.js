@@ -24,30 +24,27 @@ const day = String(today.getDate()).padStart(2, '0');
 const date_str = `${year}${month}${day}`;
 
 callApi(date_str).then(data => {
-  // グループリスト (ここでは1グループにつき1列)と対応する日本語のラベル
   var allGroup = [
-    { name: "direct_handling_rate", label: "直受け率" },
-    { name: "cumulative_callback_rate_under_20_min", label: "20分内率" },
-    { name: "cumulative_callback_rate_under_40_min", label: "40分内率" }
+    { name: "direct_handling_rate", label: "直受け率", threshold: 0.35 },
+    { name: "cumulative_callback_rate_under_20_min", label: "20分内率", threshold: 0.8 },
+    { name: "cumulative_callback_rate_under_40_min", label: "40分内率", threshold: 0.9 }
   ];
 
-  // データを再フォーマットする: {x, y} タプルの配列が必要
   let dataReady = allGroup.map(function(grp) { 
       return {
           name: grp.name,
           label: grp.label,
+          threshold: grp.threshold,
           values: data.map(function(d) {
               return {time: new Date(d.created_at), value: +d[grp.name]};
           })
       };
   });
 
-  // グラフの寸法と余白を設定する
   let margin = {top: 10, right: 100, bottom: 30, left: 30},
       width = 800 - margin.left - margin.right,
       height = 400 - margin.top - margin.bottom;
 
-  // svgオブジェクトをページの本文に追加する
   let svg = d3.select("#my_dataviz")
     .append("svg")
       .attr("width", width + margin.left + margin.right)
@@ -55,12 +52,10 @@ callApi(date_str).then(data => {
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  // カラー スケール: 各グループに1色
   var myColor = d3.scaleOrdinal()
   .domain(allGroup.map(grp => grp.name))
   .range(d3.schemeSet2);
 
-  // X軸のスケール: 0:00～24:00の時間範囲に固定
   var x = d3.scaleTime()
   .domain([new Date(`${year}-${month}-${day}T00:00:00`), new Date(`${year}-${month}-${day}T23:59:59`)])
   .range([0, width]);
@@ -70,7 +65,6 @@ callApi(date_str).then(data => {
   .selectAll("text")
   .style("fill", "white");
 
-  // Y軸のスケールを0から1の範囲に変更
   var y = d3.scaleLinear()
   .domain([0, 1])
   .range([height, 0]);
@@ -79,7 +73,6 @@ callApi(date_str).then(data => {
   .selectAll("text")
   .style("fill", "white");
 
-  // 線を追加
   var line = d3.line()
   .x(function(d) { return x(new Date(d.time)); })
   .y(function(d) { return y(+d.value); });
@@ -93,7 +86,6 @@ callApi(date_str).then(data => {
     .style("stroke-width", 1)
     .style("fill", "none");
 
-  // 点を追加
   svg
   .selectAll("myDots")
   .data(dataReady)
@@ -110,7 +102,6 @@ callApi(date_str).then(data => {
     .attr("r", 2)
     .attr("stroke", "white");
 
-  // 各線の終端にラベルを追加
   svg
   .selectAll("myLabels")
   .data(dataReady)
@@ -124,4 +115,17 @@ callApi(date_str).then(data => {
     .text(function(d) { return d.label; })
     .style("fill", function(d){ return myColor(d.name); })  // ラベルの色を線の色と一致させる
     .style("font-size", 15);
+
+  // 水平線を追加
+  svg.selectAll("myThresholdLines")
+  .data(dataReady)
+  .enter()
+  .append("line")
+    .attr("x1", 0)
+    .attr("x2", width)
+    .attr("y1", function(d){ return y(d.threshold); })
+    .attr("y2", function(d){ return y(d.threshold); })
+    .attr("stroke", function(d){ return myColor(d.name); })
+    .style("stroke-width", 1)
+    .style("stroke-dasharray", ("3, 3"));
 });
