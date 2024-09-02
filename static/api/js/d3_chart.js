@@ -63,7 +63,13 @@ callApi(date_str).then(data => {
   .attr("transform", "translate(0," + height + ")")
   .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%H:%M")))
   .selectAll("text")
-  .style("fill", "white");
+  .style("fill", "white"); // ラベルの色を白にする
+
+  svg.selectAll(".domain")  // x軸の線の色を白に
+  .style("stroke", "white");
+
+  svg.selectAll(".tick line")  // x軸の目盛線の色を白に
+  .style("stroke", "white");
 
   var y = d3.scaleLinear()
   .domain([0, 1])
@@ -71,7 +77,13 @@ callApi(date_str).then(data => {
   svg.append("g")
   .call(d3.axisLeft(y))
   .selectAll("text")
-  .style("fill", "white");
+  .style("fill", "white"); // ラベルの色を白にする
+
+  svg.selectAll(".domain")  // y軸の線の色を白に
+  .style("stroke", "white");
+
+  svg.selectAll(".tick line")  // y軸の目盛線の色を白に
+  .style("stroke", "white");
 
   var line = d3.line()
   .x(function(d) { return x(new Date(d.time)); })
