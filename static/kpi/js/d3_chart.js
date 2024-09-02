@@ -72,7 +72,7 @@ callApi(date_str).then(data => {
   .style("stroke", "white");
 
   var y = d3.scaleLinear()
-  .domain([0, 1.4])
+  .domain([0, 1.5])
   .range([height, 0]);
   svg.append("g")
   .call(d3.axisLeft(y))
