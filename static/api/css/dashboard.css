@@ -210,9 +210,15 @@ h1 {
 
 -------------------------*/
 .chartContainer {
+    display: flex;
     flex: 1;
     color: white;
     width: 70%;
+}
+.d3Chart {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
 }
 .domain {
     font-size: 20px;
