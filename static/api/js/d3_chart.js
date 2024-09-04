@@ -1,3 +1,4 @@
+// date_str YYYYMMDD 形式の日付文字列を引数にして、１日分のKPIデータを取得する関数
 async function callApi(date_str) {
   const host = "cti-12880310";
   const api_key = "0MakB4JS.oxUR39iNSCdlZG8qtnDn6NlmkmBQ55lA";
