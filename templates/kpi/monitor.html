@@ -39,6 +39,8 @@
                     <p class="rate">{{ kpi_object.response_rate|percentage }} %</p>
                 </div>
             </div>
+        </div>
+        <div class="mainContainer">
             <div class="mainBox">
                 <h5>直受け率</h5>
                 <div class="contentField">
@@ -61,6 +63,12 @@
     </div>
 </div>
 {% endblock %}
+
 {% block footer %}
-footer
+<div class="footerContainer">
+    <ul>
+        <li>データは1分ごとに更新されます</li>
+        <li>CPHは暫定値です</li>
+    </ul>
+</div>
 {% endblock %}
