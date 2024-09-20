@@ -1,0 +1,19 @@
+/*------------------
+     titleの設定
+------------------*/
+h1 {
+    margin-top: 10px;
+}
+
+.titleContainer {
+    background-color: #1f1f1f;
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    padding-left: 20px;
+    margin-bottom: 5px;
+}
+
+.titleContainer h1, .titleContainer p {
+    color: white;
+}

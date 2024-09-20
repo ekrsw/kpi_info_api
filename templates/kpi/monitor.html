@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block head %}
+<meta http-equiv="refresh" content="30">
+{% endblock %}
+
+{% block styles %}{% load static %}
+<link rel="stylesheet" href="{% static 'kpi/css/monitor.css' %}">
+{% endblock %}
+
+{% block title %}KPI速報{% endblock %}
+
+{% block content %}
+{% load custom_filters %}
+<div class="page">
+    <div class="titleContainer">
+        <div class="mainTitle">
+            <h1>KPI速報-TVS-</h1>
+            <p>{{ kpi_object.created_at }} 現在</p>
+        </div>
+    </div>
+    <div class="contentsContainer">
+        <div class="mainContainer">
+            <div class="mainBox">
+                <h5>総着信数</h5>
+                <div class="contentField">
+                    <p class="rate">{{ kpi_object.total_calls }} 件</p>
+                </div>
+            </div>
+            <div class="mainBox">
+                <h5>留守電数</h5>
+                <div class="contentField">
+                    <p class="rate">{{ kpi_object.voicemails }} 件</p>
+                </div>
+            </div>
+            <div class="mainBox">
+                <h5>応答率</h5>
+                <div class="contentField">
+                    <p class="rate">{{ kpi_object.response_rate|percentage }} %</p>
+                </div>
+            </div>
+            <div class="mainBox">
+                <h5>直受け率</h5>
+                <div class="contentField">
+                    <p class="rate">{{ kpi_object.direct_handling_rate|percentage }} %</p>
+                </div>
+            </div>
+            <div class="mainBox">
+                <h5>20分以内折返し率</h5>
+                <div class="contentField">
+                    <p class="rate">{{ kpi_object.cumulative_callback_rate_under_20_min|percentage }} %</p>
+                </div>
+            </div>
+            <div class="mainBox">
+                <h5>40分以内折返し率</h5>
+                <div class="contentField">
+                    <p class="rate">{{ kpi_object.cumulative_callback_rate_under_40_min|percentage }} %</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block footer %}
+footer
+{% endblock %}
