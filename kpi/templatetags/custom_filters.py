@@ -8,6 +8,10 @@ register = template.Library()
 def percentage(value):
     return f"{value * 100:.2f}"
 
+@register.filter(name='percentage_m')
+def percentage_m(value):
+    return f"{value * 100:.1f}"
+
 @register.simple_tag
 def add_values(value1, value2, value3):
     return value1 + value2 + value3
